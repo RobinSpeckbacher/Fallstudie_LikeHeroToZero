@@ -1,0 +1,42 @@
+<!-- /resources/templates/template.xhtml -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+   <title><ui:insert name="title">Default Title</ui:insert></title>
+   <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+   <!-- Common Header -->
+   <header>
+      <div class="container flex">
+         <h:outputLink value="/home.xhtml" styleClass="space-x-2 text-xl">
+                <span class="icon">
+              🍃
+                </span>
+            <span>Like Hero To Zero</span>
+         </h:outputLink>
+
+         <nav>
+            <ul>
+               <li><h:link value="Home" outcome="home.xhtml" /></li>
+               <li><h:link value="Über uns" outcome="about.xhtml" /></li>
+               <li><h:link value="CO2-Daten" outcome="data.xhtml" /></li>
+               <li><h:link value="Anmelden" outcome="login.xhtml" /></li>
+            </ul>
+         </nav>
+      </div>
+   </header>
+
+   <!-- Insert page-specific content here -->
+   <ui:insert name="content">Default Content</ui:insert>
+
+   <!-- Optional Footer -->
+   <footer>
+      <p>&copy; 2024 Like Hero To Zero. All rights reserved.</p>
+   </footer>
+</h:body>
+</html>

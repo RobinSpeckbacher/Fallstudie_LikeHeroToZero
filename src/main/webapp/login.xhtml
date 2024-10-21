@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+    <title>Login - Like Hero To Zero</title>
+    <h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body class="min-h-screen bg-gradient login-page">
+    <h:link value="Go to Home Page" outcome="co2-data.xhtml" />
+    <div class="flex-center">
+        <div class="card login-card">
+            <div class="card-header">
+               <div class="anmeldung">
+                <span class="icon">🍃</span>
+                <h2 class="card-title">Anmeldung</h2>
+               </div>
+                <p class="card-description">
+                    Melden Sie sich an, um Zugang zu den CO2-Emissionsdaten zu erhalten
+                </p>
+                <h:outputText value="#{loginBean.message}" />
+            </div>
+
+            <div class="card-content">
+                <h:form class="login-form">
+                    <div class="form-group">
+                        <label for="username" class="form-label">
+                            <span class="input-icon">🧑</span>
+                            Benutzername
+                        </label>
+                        <h:inputText id="username" value="#{loginBean.username}" required="true"
+                                     class="input-field" />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" class="form-label">
+                            <span class="input-icon">🔒</span>
+                            Passwort
+                        </label>
+                        <h:inputSecret id="password" value="#{loginBean.password}" required="true"
+                                       class="input-field" />
+                    </div>
+
+                    <h:commandButton value="Anmelden 🚀" action="#{loginBean.login}" class="button" />
+                </h:form>
+            </div>
+
+            <div class="card-footer">
+                <p class="footer-text">
+                    Durch die Anmeldung stimmen Sie zu, verantwortungsvoll mit den Daten umzugehen.
+                </p>
+            </div>
+        </div>
+    </div>
+</h:body>
+
+</html>
