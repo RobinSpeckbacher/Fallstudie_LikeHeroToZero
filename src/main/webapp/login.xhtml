@@ -1,52 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<html xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-    <title>Login - Like Hero To Zero</title>
+    <title>Login und Registrierung - Like Hero To Zero</title>
     <h:outputStylesheet name="css/styles.css" />
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
 </h:head>
 
+<ui:include src="/resources/template/header.xhtml" />
 <h:body class="min-h-screen bg-gradient login-page">
-    <h:link value="Go to Home Page" outcome="co2-data.xhtml" />
+
     <div class="flex-center">
         <div class="card login-card">
             <div class="card-header">
-               <div class="anmeldung">
-                <span class="icon">🍃</span>
-                <h2 class="card-title">Anmeldung</h2>
-               </div>
+                <div class="anmeldung">
+                    <span class="icon">🍃</span>
+                    <h2 class="card-title">Willkommen</h2>
+                </div>
                 <p class="card-description">
-                    Melden Sie sich an, um Zugang zu den CO2-Emissionsdaten zu erhalten
+                    Melden Sie sich an oder erstellen Sie ein Konto, um Zugang zu den CO2-Emissionsdaten zu erhalten.
                 </p>
-                <h:outputText value="#{loginBean.message}" />
             </div>
 
-            <div class="card-content">
-                <h:form class="login-form">
-                    <div class="form-group">
-                        <label for="username" class="form-label">
-                            <span class="input-icon">🧑</span>
-                            Benutzername
-                        </label>
-                        <h:inputText id="username" value="#{loginBean.username}" required="true"
-                                     class="input-field" />
-                    </div>
+            <!-- Tab-Menü für Login und Registrierung -->
+            <p:tabView>
+                <!-- Login Tab -->
+                <p:tab title="Anmelden">
+                    <h:form class="login-form">
+                        <div class="form-group">
+                            <label for="username" class="form-label">
+                                <i class="pi pi-user" style="font-size: 1rem"/> Benutzername
+                            </label>
+                            <h:inputText id="username" value="#{loginBean.username}" required="true"
+                                         class="input-field" />
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="form-label">
+                                <i class="pi pi-lock" style="font-size: 1rem"/> Passwort
+                            </label>
+                            <h:inputSecret id="password" value="#{loginBean.password}" required="true"
+                                           class="input-field" />
+                        </div>
+                        <h:commandButton value="Anmelden 🚀" action="#{loginBean.login}" class="button" />
+                    </h:form>
+                </p:tab>
 
-                    <div class="form-group">
-                        <label for="password" class="form-label">
-                            <span class="input-icon">🔒</span>
-                            Passwort
-                        </label>
-                        <h:inputSecret id="password" value="#{loginBean.password}" required="true"
-                                       class="input-field" />
-                    </div>
-
-                    <h:commandButton value="Anmelden 🚀" action="#{loginBean.login}" class="button" />
-                </h:form>
-            </div>
+                <!-- Registrieren Tab -->
+                <p:tab title="Registrieren">
+                    <h:form class="register-form">
+                        <div class="form-group">
+                            <label for="newUsername" class="form-label">
+                                <i class="pi pi-user" style="font-size: 1rem"/> Benutzername
+                            </label>
+                            <h:inputText id="newUsername" value="#{registerBean.username}" required="true"
+                                         class="input-field" />
+                        </div>
+                        <div class="form-group">
+                            <label for="newEmail" class="form-label">
+                                <i class="pi pi-envelope" style="font-size: 1rem"/> E-Mail
+                            </label>
+                            <h:inputText id="newEmail" value="#{registerBean.email}" required="true"
+                                         class="input-field" />
+                        </div>
+                        <div class="form-group">
+                            <label for="newPassword" class="form-label">
+                                <i class="pi pi-lock" style="font-size: 1rem"/> Passwort
+                            </label>
+                            <h:inputSecret id="newPassword" value="#{registerBean.password}" required="true"
+                                           class="input-field" />
+                        </div>
+                        <h:commandButton value="Registrieren ✨" action="#{registerBean.register}" class="button" />
+                    </h:form>
+                </p:tab>
+            </p:tabView>
+            <!-- Ende des Tab-Menüs -->
 
             <div class="card-footer">
                 <p class="footer-text">
@@ -55,6 +86,7 @@
             </div>
         </div>
     </div>
-</h:body>
 
+</h:body>
+<ui:include src="/resources/template/footer.xhtml" />
 </html>

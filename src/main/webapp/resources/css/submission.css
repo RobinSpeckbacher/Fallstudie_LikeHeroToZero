@@ -1,0 +1,66 @@
+/* Submission Card */
+.submission-card {
+    background-color: white;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin-bottom: 10rem;
+}
+
+/* Input Fields */
+.form-group {
+    margin-bottom: 1.5rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.input-field {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #16A34A;
+    border-radius: 0.5rem;
+    outline: none;
+    background-color: #f0fff4;
+    color: #2f855a;
+}
+
+/* Submit Button */
+.button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #16A34A;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+}
+
+.button:hover {
+    background-color: #15803d;
+}
+
+/* Footer */
+.card-footer {
+    padding: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #4a5568;
+}
+
+/* General Page Background */
+body {
+    background: linear-gradient(to bottom, #e6f7e9, #d1f0da);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Adjusted to make responsive */
+}

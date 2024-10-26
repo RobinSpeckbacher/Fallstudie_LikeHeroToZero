@@ -2,67 +2,89 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:p="http://primefaces.org/ui">
-
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <h:head>
-    <title>About Like Hero To Zero</title>
-    <h:outputStylesheet name="css/styles.css" />
+    <title>Über Like Hero To Zero</title>
+    <h:outputStylesheet name="css/about.css" />
 </h:head>
+<ui:include src="/resources/template/header.xhtml" />
 <h:body class="min-h-screen bg-gradient about-page">
+
     <div class="container about-page">
-        <!-- Main Title Section -->
-        <h1 class="main-title">About Like Hero To Zero</h1>
+        <!-- Haupttitel-Abschnitt -->
+        <h1 class="main-title text-center">Über Like Hero To Zero</h1>
 
-        <!-- Mission Section -->
-        <div class="card description">
+        <!-- Missionsabschnitt -->
+        <p:card style="width: 100%; margin-bottom: 2em;">
+            <f:facet name="title">
+                Unsere Mission
+            </f:facet>
             <p>
-                Like Hero To Zero is a cutting-edge sustainability initiative aimed at raising awareness about global CO2 emissions. Our platform empowers users with access to the latest data on CO2 emissions for their country, fostering informed decision-making and environmental consciousness.
+                Like Hero To Zero ist eine innovative Initiative im Bereich Nachhaltigkeit, die das Bewusstsein für weltweite CO₂-Emissionen schärfen soll. Unsere Plattform bietet Nutzern Zugriff auf die neuesten Daten zu CO₂-Emissionen ihres Landes, um informierte Entscheidungen zu fördern und ein stärkeres Umweltbewusstsein zu schaffen.
             </p>
             <p>
-                We believe that by providing accurate, up-to-date information and fostering a community of environmentally conscious individuals, we can make significant strides towards a greener future.
+                Wir glauben, dass wir durch die Bereitstellung aktueller und präziser Informationen sowie durch die Förderung einer umweltbewussten Gemeinschaft große Fortschritte in Richtung einer grüneren Zukunft erzielen können.
             </p>
-        </div>
+        </p:card>
 
-        <!-- Key Features Section -->
-        <h2 class="section-title">Our Key Features</h2>
+        <!-- Hauptfunktionen-Abschnitt -->
+        <h2 class="section-title text-center">Unsere Hauptfunktionen</h2>
+
+        <!-- PrimeFaces-Grid für Hauptfunktionen mit p:card -->
         <div class="grid-container">
-            <div class="feature-card">
-                <span class="icon">📊</span>
-                <h3 class="feature-title">Real-time Data</h3>
-                <p>Access the most recent CO2 emission data for your country.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">👨‍🔬</span>
-                <h3 class="feature-title">Scientist Contributions</h3>
-                <p>Registered scientists can add new findings or correct existing data.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">🌍</span>
-                <h3 class="feature-title">Global Impact</h3>
-                <p>Understand your country's emissions in a global context.</p>
-            </div>
-            <div class="feature-card">
-                <span class="icon">🍃</span>
-                <h3 class="feature-title">Eco-friendly Tips</h3>
-                <p>Get actionable advice on reducing your carbon footprint.</p>
-            </div>
+            <!-- Echtzeitdaten -->
+            <p:card style="width: 25rem; margin-bottom: 2em;">
+                <f:facet name="title">
+                    Echtzeitdaten
+                </f:facet>
+                <p>Greifen Sie auf die aktuellsten CO₂-Emissionsdaten für Ihr Land zu.</p>
+            </p:card>
+
+            <!-- Beiträge von Wissenschaftlern -->
+            <p:card style="width: 25rem; margin-bottom: 2em;">
+                <f:facet name="title">
+                    Beiträge von Wissenschaftlern
+                </f:facet>
+                <p>Registrierte Wissenschaftler können neue Forschungsergebnisse hinzufügen oder vorhandene Daten korrigieren.</p>
+            </p:card>
+
+            <!-- Globaler Einfluss -->
+            <p:card style="width: 25rem; margin-bottom: 2em;">
+                <f:facet name="title">
+                    Globaler Einfluss
+                </f:facet>
+                <p>Verstehen Sie die Emissionen Ihres Landes im globalen Kontext.</p>
+            </p:card>
+
+            <!-- Umweltfreundliche Tipps -->
+            <p:card style="width: 25rem; margin-bottom: 2em;">
+                <f:facet name="title">
+                    Umweltfreundliche Tipps
+                </f:facet>
+                <p>Erhalten Sie hilfreiche Ratschläge zur Reduzierung Ihres CO₂-Fußabdrucks.</p>
+            </p:card>
         </div>
 
-        <!-- Development Team Section -->
-        <h2 class="section-title">Development Team</h2>
-        <div class="card team">
+        <!-- Entwicklungsteam-Abschnitt -->
+        <h2 class="section-title text-center">Entwicklungsteam</h2>
+        <p:card style="width: 100%; margin-bottom: 2em;">
+            <f:facet name="title">
+                Das Team kennenlernen
+            </f:facet>
             <ul class="team-list">
-                <li><span class="icon">👤</span> John Doe - Lead Developer</li>
-                <li><span class="icon">👤</span> Jane Smith - UI/UX Designer</li>
-                <li><span class="icon">👤</span> Max Mustermann - Backend Developer</li>
-            </ul>
-        </div>
+                <li><span class="icon">👤</span> Robin Speckbacher– Leitender Entwickler</li>
 
-        <!-- Call to Action Button -->
+            </ul>
+        </p:card>
+
+        <!-- Call-to-Action-Button -->
         <div class="text-center">
-            <h:commandButton value="Join Us in the Fight Against CO2 Emissions" styleClass="button" />
+            <p:commandButton value="Schließen Sie sich uns im Kampf gegen CO₂-Emissionen an" styleClass="button" />
         </div>
     </div>
+
 </h:body>
+<ui:include src="/resources/template/footer.xhtml" />
 </html>

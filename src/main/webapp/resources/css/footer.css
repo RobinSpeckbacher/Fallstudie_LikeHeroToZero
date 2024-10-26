@@ -1,0 +1,120 @@
+.container2 {
+    width: 100%;
+    padding: 1rem;
+    background-color:  #0c4128; /* Adjust as needed */
+    color: white;
+    margin-top: 2rem;
+    min-height: 15vh;
+
+}
+
+.footerSection {
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e0e0e0; /* use border-top for clarity */
+    color: #ffffff;
+    text-align: center;
+    flex-shrink: 0; /* prevents resizing if container size changes */
+    width: 100%; /* ensures it spans the full width */
+    box-sizing: border-box; /* includes padding within width */
+    position: relative; /* prevents overlap with fixed/sticky elements */
+    gap: 1rem; /* adds space between items */
+
+    flex-wrap: wrap; /* allows wrapping on smaller screens */
+}
+
+.footerSection > * {
+    flex: 1 1 100%; /* items take full width on small screens */
+    max-width: 100%; /* prevents overflow */
+}
+
+.footerSection div {
+    flex: 1;
+    padding: 0 1rem;
+}
+
+.secondSection{
+    text-align: center;
+    margin-left: 5rem;
+}
+
+h1, h2 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-size: 1.25rem;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.footerSection li {
+    list-style: none;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+
+
+.copy {
+    padding: 1rem 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: #e0e0e0;
+    background-color: #0c4128; /* Footer background color */
+    margin-left: 3rem;
+}
+
+
+/* Media Query for mobile devices */
+@media (max-width: 768px) {
+    .container2 {
+        padding: 0.5rem; /* Reduced padding for smaller screens */
+        margin-top: 1rem; /* Less margin for compact layout */
+    }
+
+    .footerSection {
+        flex-direction: column; /* Stacks elements vertically */
+        align-items: center; /* Centers items for mobile layout */
+        text-align: center;
+        gap: 1rem; /* Adds space between stacked items */
+    }
+
+    .footerSection div {
+        padding: 0.5rem 0; /* Reduced padding for smaller screens */
+    }
+
+    .secondSection {
+        margin-left: 0; /* Centers second section */
+        text-align: center;
+    }
+
+    h1, h2 {
+        font-size: 1.2rem; /* Scales down heading size */
+        text-align: center;
+        margin-bottom: 0.75rem; /* Adjusts spacing for readability */
+    }
+
+    ul {
+        padding-left: 0; /* Removes padding to align content */
+    }
+
+    .footerSection li {
+        font-size: 0.85rem; /* Slightly smaller font for mobile */
+        margin-bottom: 0.4rem; /* Tighter spacing */
+    }
+
+    .copy {
+        font-size: 0.8rem; /* Smaller font for copyright section */
+        margin-left: 0; /* Centers .copy section on smaller screens */
+        padding: 0.5rem 0; /* Reduces padding */
+    }
+
+    .divider {
+        width: 100%; /* Full width for dividers on mobile */
+    }
+}

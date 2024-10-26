@@ -5,7 +5,54 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-   <f:view>
-      <h:outputLabel value="Hello, world"/>
-   </f:view>
+
+<h:head>
+    <title><ui:insert name="title">Default Title</ui:insert></title>
+    <h:outputStylesheet name="css/footer.css" />
+    <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces"/>
+</h:head>
+
+<f:view>
+
+    <body>
+    <div class="container2">
+
+
+        <div class="footerSection">
+
+
+            <div class="firstSection" >
+                <h1>Like a Hero to Zero</h1>
+                <p>Gemeinsam für eine nachhaltige Zukunft und Reduizerung <br/>von CO2-Emissionen</p>
+            </div>
+            <div class ="secondSection">
+                <h2>Schnelllinks</h2>
+                <ul>
+                    <li>
+                        Über uns
+                    </li>
+                    <li>Co2-Daten</li>
+                    <li>Anmelden</li>
+                </ul>
+            </div>
+            <div class="thirdSection">
+                <h2>Kontakt</h2>
+                <ul>
+                    <li><i class="pi pi-github" style="font-size: 1rem"/> Github</li>
+                    <li> <i class="pi pi-envelope" style="font-size: 1rem"/> Email</li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="divider">
+
+        </div>
+        <div class="copy">
+            <p>
+                &copy; 2024 Like Herto to Zero. Alle Rechte vorbehalten.
+            </p>
+        </div>
+    </div>
+    </body>
+</f:view>
 </html>

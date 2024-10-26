@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
 <h:head>
@@ -11,9 +11,7 @@
 
 <h:body class="min-h-screen bg-gradient">
     <div class="container">
-        <h1 class="page-title">
-            🍃 CO2-Emissionsdaten
-        </h1>
+        <h1 class="page-title">🍃 CO2-Emissionsdaten</h1>
 
         <!-- CO2 Data by Country -->
         <div class="card">
@@ -27,10 +25,9 @@
             <div class="card-content">
                 <h:form>
                     <h:selectOneMenu value="#{co2Bean.selectedCountry}" class="select-field">
-                        <f:selectItem itemValue="" itemLabel="Wählen Sie Ihr Land" />
-                        <f:selectItem itemValue="deutschland" itemLabel="Deutschland" />
-                        <f:selectItem itemValue="oesterreich" itemLabel="Österreich" />
-                        <f:selectItem itemValue="schweiz" itemLabel="Schweiz" />
+                        <f:selectItems value="#{co2Bean.availableCountries}" var="country"
+                                       itemValue="#{country.name}" itemLabel="#{country.name}"/>
+
                         <f:ajax listener="#{co2Bean.handleCountryChange}" render="output" />
                     </h:selectOneMenu>
                 </h:form>
@@ -45,17 +42,33 @@
             <div class="card-header">
                 <span class="icon">📈</span>
                 <h2 class="card-title">CO2-Emissionen im Vergleich</h2>
-                <p class="card-description">
-                    Vergleichen Sie die CO2-Emissionen verschiedener Länder.
-                </p>
+                <p class="card-description">Vergleichen Sie die CO2-Emissionen verschiedener Länder.</p>
             </div>
             <div class="card-content">
-                <h:panelGroup id="barChart">
-                    <!-- The chart would be rendered with a JSF charting library or an external library such as PrimeFaces -->
+                <h:panelGroup id="barChartGroup">
+                    <h:form>
+                        <p:growl id="growl" showDetail="true"/>
+
+                        <div class="card">
+                            <h5>CO2-Emissionen im Vergleich</h5>
+
+                            <!-- Searchable country selection -->
+                            <p:selectCheckboxMenu id="countrySelect" value="#{co2Bean.selectedCountries}" label="Wählen Sie Länder"
+                                                  filter="true" filterPlaceholder="Suche Länder" multiple="true">
+                                <f:selectItems value="#{co2Bean.availableCountries}" var="country" itemLabel="#{country.name}" itemValue="#{country}"/>
+                                <p:ajax listener="#{co2Bean.handleCountryChange}" update="barChartGroup"/>
+                            </p:selectCheckboxMenu>
+
+                            <!-- Dynamic Bar Chart -->
+                            <p:chart widgetVar="barChartWidget" id="barChart" type="bar" model="#{co2Bean.barModel}"
+                                     style="width: 100%; height: 800px;">
+                                <p:ajax event="itemSelect" listener="#{co2Bean.onItemSelect}" update="growl"/>
+                            </p:chart>
+                        </div>
+                    </h:form>
                 </h:panelGroup>
             </div>
         </div>
     </div>
 </h:body>
-
 </html>

@@ -6,25 +6,25 @@
 
 <h:head>
    <title><ui:insert name="title">Default Title</ui:insert></title>
-   <h:outputStylesheet name="css/header_footer.css" />
+   <h:outputStylesheet name="css/header.css" />
 </h:head>
 
 <h:body>
    <!-- Common Header -->
    <header>
-      <div class="container flex">
-         <h:outputLink value="/home.xhtml" styleClass="space-x-2 text-xl">
+      <div class="containerHeader flex">
+    <div>
                 <span class="icon">
               🍃
                 </span>
             <span>Like Hero To Zero</span>
-         </h:outputLink>
+    </div>
 
          <nav>
             <ul>
-               <li><h:link value="Home" outcome="home.xhtml" /></li>
+               <li><h:link value="Home" outcome="co2-data.xhtml" /></li>
                <li><h:link value="Über uns" outcome="about.xhtml" /></li>
-               <li><h:link value="CO2-Daten" outcome="data.xhtml" /></li>
+
                <li><h:link value="Anmelden" outcome="login.xhtml" /></li>
             </ul>
          </nav>
@@ -32,11 +32,10 @@
    </header>
 
    <!-- Insert page-specific content here -->
-   <ui:insert name="content">Default Content</ui:insert>
+
 
    <!-- Optional Footer -->
-   <footer>
-      <p>&copy; 2024 Like Hero To Zero. All rights reserved.</p>
-   </footer>
+
+
 </h:body>
 </html>
