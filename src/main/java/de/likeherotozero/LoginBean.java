@@ -33,11 +33,11 @@ public class LoginBean {
         this.password = password;
     }
 
-    public String getEmail() { // Getter für die E-Mail
+    public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) { // Setter für die E-Mail
+    public void setEmail(String email) {
         this.email = email;
     }
 
@@ -46,7 +46,7 @@ public class LoginBean {
     }
 
     // Anmeldemethode
-    public String login() {
+    public String login() { 
         User user = userRepository.findByUsername(username);
         if (user != null && BCrypt.checkpw(password, user.getPassword())) {
             message = "Login erfolgreich!";
@@ -57,21 +57,5 @@ public class LoginBean {
         }
     }
 
-    // Registrierungs-Methode
-    public String register() {
-        if (userRepository.findByUsername(username) != null) {
-            message = "Benutzername bereits vergeben.";
-            return null; // Benutzername ist bereits vergeben
-        }
 
-        // Hier könntest du auch eine Validierung für die E-Mail-Adresse hinzufügen
-
-        User newUser = new User();
-        newUser.setUsername(username);
-        newUser.setEmail(email); // E-Mail-Adresse speichern
-        newUser.setPassword(BCrypt.hashpw(password, BCrypt.gensalt())); // Passwort hashen
-        userRepository.saveUser(newUser); // Neuen Benutzer speichern
-        message = "Registrierung erfolgreich!";
-        return null; // Nach der Registrierung auf derselben Seite bleiben
-    }
 }

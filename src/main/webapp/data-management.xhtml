@@ -28,7 +28,10 @@
                     <label for="country" class="form-label">
                         <i class="pi pi-flag" style="font-size: 1rem"/> Land
                     </label>
-                    <h:inputText id="country" value="#{submissionBean.country}" required="true" class="input-field" />
+                    <h:selectOneMenu id="country" value="#{submissionBean.country}" class="input-field" required="true">
+                        <f:selectItem itemLabel="Bitte wählen Sie ein Land" itemValue="" noSelectionOption="true" />
+                        <f:selectItems value="#{submissionBean.countries}" var="c" itemValue="#{c}" itemLabel="#{c}" />
+                    </h:selectOneMenu>
                 </div>
                 <div class="form-group">
                     <label for="year" class="form-label">
@@ -42,20 +45,9 @@
                     </label>
                     <h:inputText id="co2Emissions" value="#{submissionBean.co2Emissions}" required="true" class="input-field" />
                 </div>
-                <div class="form-group">
-                    <label for="dataSource" class="form-label">
-                        <i class="pi pi-book" style="font-size: 1rem"/> Datenquelle
-                    </label>
-                    <h:inputText id="dataSource" value="#{submissionBean.dataSource}" required="true" class="input-field" />
-                </div>
-                <div class="form-group">
-                    <label for="methodology" class="form-label">
-                        <i class="pi pi-info-circle" style="font-size: 1rem"/> Methodik
-                    </label>
-                    <h:inputTextarea id="methodology" value="#{submissionBean.methodology}" required="true" class="input-field" rows="5" />
-                </div>
                 <h:commandButton value="Daten Einreichen" action="#{submissionBean.submitData}" class="button" />
             </h:form>
+
 
             <div class="card-footer">
                 <p class="footer-text">

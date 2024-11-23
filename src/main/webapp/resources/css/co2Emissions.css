@@ -1,0 +1,58 @@
+/* Background gradient */
+.bg-gradient {
+    background: linear-gradient(to bottom, #e0f7e9, #b3e6cc);
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Card styles */
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    background-color: #0f9d58;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    padding: 10px 20px;
+}
+
+.icon {
+    margin-right: 10px;
+    font-size: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-description {
+    margin: 10px 0;
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Select menu */
+.select-field {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Chart footer */
+.chart-footer {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    color: #777;
+}

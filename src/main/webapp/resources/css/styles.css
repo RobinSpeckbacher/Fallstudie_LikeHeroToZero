@@ -9,7 +9,8 @@
     margin-bottom: 10rem;
 }
 label{
-    color: black;
+    color: #198754;
+    width: 80%;
 }
 
 .flex-center{
@@ -67,7 +68,7 @@ label{
     border-radius: 0.5rem;
     outline: none;
 
-    background-color: #f0fff4;
+
     color: #2f855a;
 
 }
@@ -90,6 +91,11 @@ label{
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin: 0 auto;
+}
+
+.submission-card{
+    background:#0c4128;
+    border-radius: 15px;
 }
 
 .button:hover {
@@ -232,6 +238,22 @@ span{
 
 li{
     list-style: none;
+}
+
+.card{
+    text-align: center;
+    width:800px;
+    background: white;
+}
+
+.form-group{
+    background: white;
+}
+
+.card-footer{
+    background:#f0fdf4 ;
+    padding: 2rem;
+    margin-top: 1rem;
 }
 
 /* --- Media Queries for Responsiveness --- */

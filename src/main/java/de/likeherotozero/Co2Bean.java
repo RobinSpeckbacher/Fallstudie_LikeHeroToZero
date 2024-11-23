@@ -1,5 +1,6 @@
 package de.likeherotozero;
 
+import jakarta.el.MethodExpression;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
 import jakarta.persistence.EntityManager;
@@ -25,7 +26,7 @@ public class Co2Bean implements Serializable {
     private List<EmissionsData> emissionsDataList = new ArrayList<>();
     private EmissionsData emissionsData; // Add this line
 
-    @PersistenceContext(unitName = "my-persistence-unit")
+    @PersistenceContext(unitName = "nutzerPersistenceUnit")
     private EntityManager entityManager;
 
 
@@ -63,9 +64,8 @@ public class Co2Bean implements Serializable {
     }
 
     public void handleCountryChange() {
-        // Update emissionsData based on selectedCountry
         emissionsData = getEmissionsDataForCountry(selectedCountry);
-        createBarModel(); // Optional: Update the bar model if you want it to change with the country selection
+        createBarModel();
     }
 
     public void onItemSelect(ItemSelectEvent event) {
@@ -79,13 +79,11 @@ public class Co2Bean implements Serializable {
     }
 
     private List<Country> loadAvailableCountries() {
-        // Load unique countries from the emissions data
-        List<Country> countries = entityManager.createQuery("SELECT DISTINCT e.country FROM EmissionsData e", String.class)
+        return entityManager.createQuery("SELECT DISTINCT e.country FROM EmissionsData e", String.class)
                 .getResultList()
                 .stream()
                 .map(Country::new)
                 .toList();
-        return countries;
     }
 
     // Getters and Setters
@@ -113,4 +111,6 @@ public class Co2Bean implements Serializable {
     public EmissionsData getEmissionsData() { // Add this getter
         return emissionsData;
     }
+
+
 }

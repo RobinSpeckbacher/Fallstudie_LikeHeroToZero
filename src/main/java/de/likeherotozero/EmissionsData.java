@@ -1,17 +1,20 @@
 package de.likeherotozero;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users", schema = "nutzer")
+@Table(name = "co2_emissionen", schema = "nutzer")
 
 public class EmissionsData {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column (name = "land")
     private String country;
+    @Column (name = "co2_emissionen_mt")
     private double value;
+    private int jahr;
+
 
     // Getters and Setters
     public Long getId() {
@@ -31,5 +34,11 @@ public class EmissionsData {
     }
     public void setValue(double value) {
         this.value = value;
+    }
+    public int getJahr() {
+        return jahr;
+    }
+    public void setJahr(int jahr) {
+        this.jahr = jahr;
     }
 }

@@ -1,11 +1,45 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+>
+
+<h:head>
+    <title>CO2 Emissions Data Verification</title>
+    <h:outputStylesheet name="css/approval.css" />
+</h:head>
+
+<ui:include src="/resources/template/header.xhtml" />
+<h:body class="approvalSection">
+
+    <h:form id="form" class="form">
+        <p:panel header="CO2 Emissions Data Verification" styleClass="container">
+            <h:outputText value="Pending Changes" styleClass="header" />
+            <h:outputText value="Review and approve or reject changes to the CO2 emissions data." styleClass="sub-header" />
+
+            <!-- Pending Change Item -->
+            <p:panel styleClass="change-item">
+                <h:outputText value="Data Update" styleClass="change-title" />
+                <h:outputText value="Updated CO2 emissions for Factory A" styleClass="change-description" />
+
+                <p:commandButton value="Approve" styleClass="approve-button" action="#{bean.approveChange}" />
+                <p:commandButton value="Reject" styleClass="reject-button" action="#{bean.rejectChange}" />
+            </p:panel>
+
+            <!-- New Entry Item -->
+            <p:panel styleClass="change-item">
+                <h:outputText value="New Entry" styleClass="change-title" />
+                <h:outputText value="Added new emission source: Solar Farm B" styleClass="change-description" />
+
+                <p:commandButton value="Approve" styleClass="approve-button" action="#{bean.approveChange}" />
+                <p:commandButton value="Reject" styleClass="reject-button" action="#{bean.rejectChange}" />
+            </p:panel>
+
+            <h:outputText value="Changes are permanently applied once approved." styleClass="footer-text" />
+        </p:panel>
+    </h:form>
+
+</h:body>
+<ui:include src="/resources/template/footer.xhtml" />
 </html>

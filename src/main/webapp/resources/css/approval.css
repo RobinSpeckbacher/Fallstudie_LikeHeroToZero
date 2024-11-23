@@ -1,0 +1,63 @@
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: #0c4128;
+}
+
+.form{
+    height:80vh;
+}
+
+
+.header {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.form-group{
+    min-height: 70vh;
+}
+
+.sub-header {
+   background: #0c4128;
+    margin-bottom: 20px;
+}
+
+.change-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.change-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.change-description {
+    color: #666;
+}
+
+.approve-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    margin-right: 5px;
+}
+
+.reject-button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+}
+
+.footer-text {
+    display: block;
+    color: #666;
+    margin-top: 20px;
+    font-size: 12px;
+}

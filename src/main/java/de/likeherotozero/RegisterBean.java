@@ -11,7 +11,7 @@ public class RegisterBean {
     private String username;
     private String password;
     private String email; // Neues Feld für die E-Mail-Adresse
-    private String message;
+
 
     @Inject
     private UserRepository userRepository;
@@ -40,13 +40,10 @@ public class RegisterBean {
         this.email = email;
     }
 
-    public String getMessage() {
-        return message;
-    }
+
 
     public String register() {
         if (userRepository.findByUsername(username) != null) {
-            message = "Benutzername bereits vergeben!";
             return null;  // Keine Weiterleitung, da Registrierung fehlschlägt
         } else {
             User newUser = new User();
@@ -54,8 +51,10 @@ public class RegisterBean {
             newUser.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
             newUser.setEmail(email); // E-Mail-Adresse speichern
             userRepository.saveUser(newUser);
-            message = "Registrierung erfolgreich!";
             return "login?faces-redirect=true";  // Weiterleitung zur Login-Seite
         }
     }
+
+
+
 }

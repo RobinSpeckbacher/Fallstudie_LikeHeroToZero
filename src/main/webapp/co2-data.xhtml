@@ -19,21 +19,23 @@
                 <span class="icon">🌍</span>
                 <h2 class="card-title">CO2-Ausstoß nach Land</h2>
                 <p class="card-description">
-                    Wählen Sie Ihr Land aus, um die aktuellsten verfügbaren CO2-Emissionsdaten zu sehen.
+                    Wählen Sie ein Land, um die CO2-Emissionsdaten zu sehen.
                 </p>
             </div>
             <div class="card-content">
                 <h:form>
-                    <h:selectOneMenu value="#{co2Bean.selectedCountry}" class="select-field">
+                    <p:selectOneMenu value="#{co2Bean.selectedCountry}" styleClass="select-field">
+                        <f:selectItem itemLabel="-- Land wählen --" itemValue="" />
                         <f:selectItems value="#{co2Bean.availableCountries}" var="country"
-                                       itemValue="#{country.name}" itemLabel="#{country.name}"/>
+                                       itemValue="#{country.name}" itemLabel="#{country.name}" />
+                        <p:ajax listener="#{co2Bean.handleCountryChange}" update="output" />
+                    </p:selectOneMenu>
 
-                        <f:ajax listener="#{co2Bean.handleCountryChange}" render="output" />
-                    </h:selectOneMenu>
+                    <h:panelGroup id="output">
+                        <h:outputText value="#{co2Bean.emissionsData != null ? co2Bean.selectedCountry + ': ' + co2Bean.emissionsData.value + ' Mio. Tonnen CO2 (' + co2Bean.emissionsData.jahr + ')' : 'Bitte wählen Sie ein Land.'}"
+                                      styleClass="emissions-output" />
+                    </h:panelGroup>
                 </h:form>
-
-                <h:outputText id="output" value="#{co2Bean.emissionsData != null ? co2Bean.selectedCountry + ': ' + co2Bean.emissionsData.value + ' Millionen Tonnen CO2 (' + co2Bean.emissionsData.year + ')' : ''}"
-                              class="emissions-output" />
             </div>
         </div>
 
@@ -45,30 +47,36 @@
                 <p class="card-description">Vergleichen Sie die CO2-Emissionen verschiedener Länder.</p>
             </div>
             <div class="card-content">
-                <h:panelGroup id="barChartGroup">
-                    <h:form>
-                        <p:growl id="growl" showDetail="true"/>
+                <h:form>
+                    <p:selectCheckboxMenu value="#{co2Bean.selectedCountries}" label="Länder auswählen"
+                                          filter="true" multiple="true">
+                        <f:selectItems value="#{co2Bean.availableCountries}" var="country"
+                                       itemLabel="#{country.name}" itemValue="#{country.name}" />
+                        <p:ajax listener="#{co2Bean.updateChart}" update="barChart" />
+                    </p:selectCheckboxMenu>
 
-                        <div class="card">
-                            <h5>CO2-Emissionen im Vergleich</h5>
-
-                            <!-- Searchable country selection -->
-                            <p:selectCheckboxMenu id="countrySelect" value="#{co2Bean.selectedCountries}" label="Wählen Sie Länder"
-                                                  filter="true" filterPlaceholder="Suche Länder" multiple="true">
-                                <f:selectItems value="#{co2Bean.availableCountries}" var="country" itemLabel="#{country.name}" itemValue="#{country}"/>
-                                <p:ajax listener="#{co2Bean.handleCountryChange}" update="barChartGroup"/>
-                            </p:selectCheckboxMenu>
-
-                            <!-- Dynamic Bar Chart -->
-                            <p:chart widgetVar="barChartWidget" id="barChart" type="bar" model="#{co2Bean.barModel}"
-                                     style="width: 100%; height: 800px;">
-                                <p:ajax event="itemSelect" listener="#{co2Bean.onItemSelect}" update="growl"/>
-                            </p:chart>
-                        </div>
-                    </h:form>
-                </h:panelGroup>
+                    <p:chart type="bar" model="#{co2Bean.barModel}" id="barChart" style=" height:400px;">
+                        <p:ajax event="itemSelect" listener="#{co2Bean.onItemSelect}" update="growl" />
+                    </p:chart>
+                    <p class="chart-footer">
+                        Quelle: Nationale Umweltbehörden,
+                    </p>
+                </h:form>
             </div>
         </div>
     </div>
+
+    <!-- Data Information -->
+    <div class="card">
+        <div class="card-header">
+            <span class="icon">ℹ️</span>
+            <span class="card-title">Über die Daten</span>
+        </div>
+        <p class="card-description">
+            Diese Grafik zeigt die CO2-Emissionen des ausgewählten Landes für das Jahr #{co2Bean.year}.
+            Die Daten werden in Millionen Tonnen CO2 angegeben und stammen aus offiziellen Quellen.
+        </p>
+    </div>
+
 </h:body>
 </html>
